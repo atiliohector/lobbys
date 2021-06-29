@@ -1,5 +1,7 @@
 from django.db import models
 
+#Adicionar celular ou computador
+
 class PlayerModel(models.Model):
     name = models.CharField('Name', max_length=255, blank=False)
     age = models.PositiveIntegerField('Age', blank=False, default=18)
