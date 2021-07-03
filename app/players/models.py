@@ -7,6 +7,7 @@ class PlayerModel(models.Model):
     age = models.PositiveIntegerField('Age', blank=False, default=18)
     position = models.CharField('Position', blank=False, max_length=255)
     guild = models.CharField('Guild', blank=False, max_length=255)
+    
 
     def __str__(self):
         return self.name
