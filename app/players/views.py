@@ -8,13 +8,13 @@ from .serializer import PlayerSerializer
 
 class PlayersEndPoint(APIView):
 
-    def get_player(self, request):
+    def get(self, request):
 
         players = PlayerModel.objects.all()
         player_serializer = PlayerSerializer(players, many=True)
         return Response(player_serializer.data)
 
-    def post_player(self, request):
+    def post(self, request):
 
         data = {
 
