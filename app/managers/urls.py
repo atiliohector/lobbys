@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.AllManagers.as_view(), name='all_managers'),
+    path('', views.ManagerEndPoint.as_view(), name='all_managers'),
 
 ]
