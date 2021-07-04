@@ -1,7 +1,8 @@
 from django.http.response import Http404
-from app import players
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 
 from .models import PlayerModel
 from .serializer import PlayerSerializer
@@ -47,6 +48,12 @@ class JustPlayer(APIView):
         player = self.get_player(id=id)
         player_serializer = PlayerSerializer(player)
         return Response(player_serializer.data)
+
+    def delete(self, request, id):
+
+        player = self.get_player(id=id)
+        player.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PlayerByPosition(APIView):
 
