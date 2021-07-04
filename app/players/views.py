@@ -1,3 +1,4 @@
+from django.http.response import Http404
 from app import players
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -32,6 +33,20 @@ class PlayersEndPoint(APIView):
             return Response(player.data)
         else:
             return Response(player.errors)
+
+class JustPlayer(APIView):
+
+    def get_player(self, id):
+        try:
+            return PlayerModel.objects.get(id=id)
+        except PlayerModel.DoesNotExist:
+            return Http404
+    
+    def get(self, request, id):
+
+        player = self.get_player(id=id)
+        player_serializer = PlayerSerializer(player)
+        return Response(player_serializer.data)
 
 class PlayerByPosition(APIView):
 
