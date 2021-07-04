@@ -32,3 +32,11 @@ class PlayersEndPoint(APIView):
             return Response(player.data)
         else:
             return Response(player.errors)
+
+class PlayerByPosition(APIView):
+
+    def get(self, request, position):
+
+        player = PlayerModel.objects.filter(position=position)
+        player_serializer = PlayerSerializer(player, many=True)
+        return Response(player_serializer.data)
