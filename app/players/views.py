@@ -55,6 +55,16 @@ class JustPlayer(APIView):
         player.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    def put(self, request, id):
+
+        player = self.get_player(id)
+        serializer = PlayerSerializer(player, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+
 class PlayerByPosition(APIView):
 
     def get(self, request, position):
