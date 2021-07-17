@@ -9,7 +9,7 @@ class AllUser(APIView):
     def get(self, request):
 
         users = UserModel.objects.all()
-        user_serializer = UserSerializer(users)
+        user_serializer = UserSerializer(users, many=True)
         return Response(user_serializer.data)
 
 class AddUser(APIView):
