@@ -31,3 +31,28 @@ class AddUser(APIView):
             return Response(user_serializer.data)
         else:
             return Response(user_serializer.errors)
+
+class SpecificUser(APIView):
+
+    def get_user(self, id):
+
+        try:
+            return UserModel.objects.get(id=id)
+        except UserModel.DoesNotExist:
+            return Response('Its was not this time!')
+    
+    def get(self, request, id):
+
+        user_baby = self.get_user(id=id)
+        user_serializer = UserSerializer(user_baby)
+        try:
+            return Response(user_serializer.data)
+        except UserModel.DoesNotExist:
+            return Response('Does not exist! ')
+
+
+    def delelete(self, request, id):
+        
+        user_baby = self.get_user(id)
+        user_baby.delelete()
+        return Response('Deleted successfully!')
