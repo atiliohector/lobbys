@@ -2,11 +2,12 @@ from rest_framework import serializers
 
 from .models import UserModel
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.Serializer):
     class Meta:
         model = UserModel
-        fields = [
-            'name', 
-            'age', 
-            'profession'
-        ]
+        fields = (
+            "id",
+            "age",
+            "type_user",
+            "mode_game",
+        )
