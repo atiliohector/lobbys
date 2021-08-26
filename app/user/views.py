@@ -16,7 +16,6 @@ class AddUser(APIView):
     def post(self, request):
 
         data = {
-            'id':request.data['id'],
             'name': request.data['name'],
             'age':request.data['age'],
             'type_user':request.data['type_user'],
