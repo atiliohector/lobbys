@@ -7,6 +7,7 @@ class UserSerializer(serializers.Serializer):
         model = UserModel
         fields = (
             "id",
+            "name",
             "age",
             "type_user",
             "mode_game",
