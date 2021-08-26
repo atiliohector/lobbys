@@ -10,3 +10,22 @@ class AllUsers(APIView):
         users = UserModel.objects.all()
         user_serializer = UserSerializer(users,many=True)
         return Response(user_serializer.data)
+
+class AddUser(APIView):
+
+    def post(self, request):
+
+        data = {
+            'name': request.data['name'],
+            'age':request.data['age'],
+            'type_user':request.data['type_user'],
+            'mode_game':request.data['mode_game']
+        }
+
+        user = UserSerializer(data=request.data)
+
+        if user.is_valid():
+            user.save()
+            return Response('User was added!')
+        else:
+            return Response('Did not work')
