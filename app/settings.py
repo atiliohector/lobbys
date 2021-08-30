@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'app.user',
 
     'rest_framework',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,16 @@ TEMPLATES = [
     },
 ]
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)],
+        },
+        'ROUTING': 'example_channels.routing.channel_routing',
+    }
+}
+
 ROOT_URLCONF = 'app.urls'
 
 
@@ -67,10 +78,14 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'lobbys',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                'host': 'mongodb://atilio:xsxiEzdGsEv5c5DX@<atlas cluster>/lobbys?retryWrites=true&w=majority'
+            }  
+        }
 }
 
 
