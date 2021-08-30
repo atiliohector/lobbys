@@ -72,7 +72,7 @@ DATABASES = {
             'NAME': 'lobbys',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://atilio:xsxiEzdGsEv5c5DX@<atlas cluster>/lobbys?retryWrites=true&w=majority'
+                'host': 'mongodb://atilio:xsxiEzdGsEv5c5DX@<atlas cluster>/lobbys?retryWrites=true&w=majority'
             }  
         }
 }
