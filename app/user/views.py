@@ -47,3 +47,12 @@ class SpecificUser(APIView):
         user = self.get_user(id)
         user.delete()
         return Response('Delete with sucessfull!')
+    
+    def put(self, request, id):
+        user = self.get_user(id)
+        user_serializer = UserSerializer(user, data=request.data)
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return Response(user_serializer.data)
+        else:
+            return Response('Did not work')
