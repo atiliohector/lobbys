@@ -1,6 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from channels import Group
+
 from .models import UserModel
 from .serializer import UserSerializer
 
