@@ -29,3 +29,16 @@ class AddUser(APIView):
             return Response('User was added!')
         else:
             return Response('Did not work')
+
+class SpecificUser(APIView):
+
+    def get_user(self, id):
+        try:
+            return UserModel.objects.get(id=id)
+        except UserModel.DoesNotExist:
+            return Response('Doesnt exist')
+    
+    def get(self, request, id):
+        user = self.get_user(id)
+        user_serializer = UserSerializer(user)
+        return Response(user_serializer.data)
