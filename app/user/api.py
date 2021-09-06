@@ -37,7 +37,7 @@ class SpecificUser(APIView):
             return UserModel.objects.get(id=id)
         except UserModel.DoesNotExist:
             return Response('Doesnt exist')
-    
+
     def get(self, request, id):
         user = self.get_user(id)
         user_serializer = UserSerializer(user)
@@ -47,7 +47,7 @@ class SpecificUser(APIView):
         user = self.get_user(id)
         user.delete()
         return Response('Delete with sucessfull!')
-    
+
     def put(self, request, id):
         user = self.get_user(id)
         user_serializer = UserSerializer(user, data=request.data)
