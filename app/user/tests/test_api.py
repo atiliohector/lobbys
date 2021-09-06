@@ -1,6 +1,7 @@
 import pytest
 
 @pytest.fixture
-def function_fixture():
-    print('Atilio é gostoso')
-    return 1
+def first_function():
+    print('Print this fucking shit')
+    a = 1
+    assert a == 1
