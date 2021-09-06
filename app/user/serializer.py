@@ -11,4 +11,5 @@ class UserSerializer(serializers.ModelSerializer):
             "age",
             "type_user",
             "mode_game",
+            "guild",
         )
