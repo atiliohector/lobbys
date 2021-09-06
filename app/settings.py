@@ -78,15 +78,17 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'lobbys',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb://atilio:xsxiEzdGsEv5c5DX@<atlas cluster>/lobbys?retryWrites=true&w=majority'
-            }  
+    'default': {
+        'ENGINE': 'djongo',
+        'CLIENT': {
+            'host': 'mongodb+srv://atilio:xsxiEzdGsEv5c5DX@lobbys.ztmv0.mongodb.net/lobbys?retryWrites=true&w=majority',
+            'username': 'atilio',
+            'password': 'xsxiEzdGsEv5c5DX',
+            'authMechanism': 'SCRAM-SHA-1'
         }
+    }
 }
+
 
 
 # Password validation
