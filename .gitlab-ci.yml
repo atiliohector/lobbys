@@ -1,0 +1,20 @@
+stages:
+  - lint
+  - test
+  - build
+  - deploy
+
+# Shared stuff
+default:
+  tags:
+    - Shared
+
+.python:
+  image: python:3.9.4
+
+include:
+  - project: "developer-experience/olist-gitlab-templates"
+    file:
+      - "/templates/python.yml"
+      - "/templates/build.yml"
+      - "/templates/deploy.yml"
