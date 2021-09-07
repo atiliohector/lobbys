@@ -20,7 +20,6 @@ class AddUser(APIView):
             'age':request.data['age'],
             'type_user':request.data['type_user'],
             'mode_game':request.data['mode_game'],
-            'guild': request.data['guild'],
         }
 
         user = UserSerializer(data=request.data)
