@@ -1,6 +1,6 @@
 from django.db import models
 
-class UserModel(models.Model):
+class PlayerModel(models.Model):
 
     MOBILE = "Mobile"
     COMPUTER = "Computer"
@@ -22,7 +22,7 @@ class GuildModels(models.Model):
 
     name = models.CharField('Name', max_length=255)
     size_players = models.IntegerField('Size Players', default=1)
-    guild_player = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    guild_player = models.ForeignKey(PlayerModel, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
