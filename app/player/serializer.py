@@ -1,10 +1,10 @@
 from rest_framework import serializers
 
-from .models import UserModel
+from .models import PlayerModel, GuildModels
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserModel
+        model = PlayerModel
         fields = (
             "id",
             "name",
@@ -12,3 +12,8 @@ class UserSerializer(serializers.ModelSerializer):
             "type_user",
             "mode_game",
         )
+
+class GuildSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GuildModels
+        fields = '__all__'

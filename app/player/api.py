@@ -1,15 +1,21 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import UserModel
-from .serializer import UserSerializer
+from .models import PlayerModel, GuildModels
+from .serializer import UserSerializer, GuildSerializer
 
 class AllUsers(APIView):
 
     def get(self, request):
-        users = UserModel.objects.all()
+        users = PlayerModel.objects.all()
         user_serializer = UserSerializer(users,many=True)
         return Response(user_serializer.data)
+
+class AllGuilders(APIView):
+    def get(self, request):
+        guilds = GuildModels.objects.all()
+        guild_serializer = GuildSerializer(guilds, many=True)
+        return Response(guild_serializer.data)
 
 class AddUser(APIView):
 
@@ -34,8 +40,8 @@ class SpecificUser(APIView):
 
     def get_user(self, id):
         try:
-            return UserModel.objects.get(id=id)
-        except UserModel.DoesNotExist:
+            return PlayerModel.objects.get(id=id)
+        except PlayerModel.DoesNotExist:
             return Response('Doesnt exist')
 
     def get(self, request, id):
